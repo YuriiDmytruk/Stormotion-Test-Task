@@ -1,5 +1,3 @@
-import React from 'react';
-
 import './style/header-style.css'
 
 function Header() {

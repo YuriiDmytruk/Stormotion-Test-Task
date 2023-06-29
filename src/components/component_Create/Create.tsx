@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { useNavigate } from "react-router-dom";
 
@@ -59,7 +59,7 @@ function Create() {
     setState((previous) => ({ ...previous, maxMatchesMove: 0 }))
   }
   
-  let navigate = useNavigate();
+  let navigate : any = useNavigate();
   
   return (
     <div className="create">

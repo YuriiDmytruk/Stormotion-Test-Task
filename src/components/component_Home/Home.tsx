@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from "react-router-dom";
 
 import './style/home-style.css';
@@ -6,8 +5,8 @@ import './style/home-style.css';
 
 
 function Home() {
-  let navigate = useNavigate(); 
-  let options = {
+  let navigate : any = useNavigate(); 
+  let options : any = {
     isEasy: true,
     maxMatches: 25,
     maxMatchesMove: 3,

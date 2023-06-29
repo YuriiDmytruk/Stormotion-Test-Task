@@ -1,5 +1,6 @@
 import './style/game-style.css'
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -11,16 +12,27 @@ function Game() {
     matchesLeft: JSON.parse(sessionStorage.options).maxMatches,
   });
 
-  const maxMatchesForMove = JSON.parse(sessionStorage.options).maxMatchesMove;
+  const maxMatchesForMove : number = JSON.parse(sessionStorage.options).maxMatchesMove;
 
-  const didMount = useRef(false);
+  const didMount : any = useRef(false);
 
   const aiMove = () => {
-    if (!scores.isPlayerMove) {
-      console.log("AiMove")
+    if (!scores.isPlayerMove && scores.matchesLeft > 0) {
 
-      let max = (scores.matchesLeft > 3 ? 3 : scores.matchesLeft);
-      let number = Math.floor(Math.random() * max) + 1;
+      let max : number = scores.matchesLeft > maxMatchesForMove ? maxMatchesForMove : scores.matchesLeft;
+      let number : number = max === 1 ? 1 : 0;
+    
+      if (scores.matchesLeft > maxMatchesForMove * 2) {
+        number = Math.floor(Math.random() * max) + 1;
+      }
+      else {
+        if (scores.aiScore % 2 === 0) {
+          number = max % 2 === 0 ? max : max - 1;
+        }
+        else {
+          number = max % 2 !== 0 ? max : max - 1;
+        }
+      }
 
       setScores((previous) => ({
         ...previous,
@@ -43,20 +55,42 @@ function Game() {
     }))
   };
 
+  const restartGame = () => {
+    setScores({
+      isPlayerMove: JSON.parse(sessionStorage.options).isEasy,
+      aiScore: 0,
+      playerScore: 0,
+      matchesLeft: JSON.parse(sessionStorage.options).maxMatches,
+    });
+  }
+
   useEffect(() => {
   if (!didMount.current) {
     didMount.current = true;
     return;
   }
     aiMove();
-}, [scores]);
+  }, [scores]);
+  
+  let navigate = useNavigate();
 
   return (
     <div className="game">
       <div className="ai-score">AI Score: <span>{ scores.aiScore }</span></div>
       <div className="matches-left">
-        <div>Matches Left:</div>
-        <div className="matches">{scores.matchesLeft}</div>
+        {scores.matchesLeft > 0 ?
+          <>
+            <div>Matches Left:</div>
+            <div className="matches">{scores.matchesLeft}</div>
+          </>
+          :
+          <>
+            <div className={scores.playerScore % 2 === 0 ? "win" : "loose"}>
+              {scores.playerScore % 2 === 0 ? "You win" : "You loose"}
+            </div>
+            <button onClick={restartGame}>Restart</button>
+            <button onClick={() => {navigate("../create")}}>Options</button>
+          </>}
       </div>
       <div className="buttons">
         {Array.from({ length: maxMatchesForMove }, (_, index) => index + 1).map((value) => (
