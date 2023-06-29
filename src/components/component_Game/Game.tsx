@@ -1,44 +1,51 @@
 import './style/game-style.css'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 
 
 function Game() {
   const [scores, setScores] = useState({
-    isPlayerMove: true,
+    isPlayerMove: (sessionStorage.getItem("isEasy") === "True"),
     aiScore: 0,
     playerScore: 0,
     matchesLeft: 25,
   });
 
-  useEffect(() => {
-    console.log(scores.matchesLeft);
-    if (scores.matchesLeft > 0 && !scores.isPlayerMove) { 
+  const didMount = useRef(false);
+
+  const aiMove = () => {
+    if (!scores.isPlayerMove) {
+      console.log("AiMove")
       let max = (scores.matchesLeft > 3 ? 3 : scores.matchesLeft);
-      console.log("max   " + max);
       let number = Math.floor(Math.random() * max) + 1;
-      console.log("number  " + number);
       setScores((previous) => ({
         ...previous,
-        isPlayerMove: true,
         aiScore: previous.aiScore + number,
-        matchesLeft: previous.matchesLeft - number
+        matchesLeft: previous.matchesLeft - number,
+        isPlayerMove: true
       }));
     }
-  }, [scores]);
-
-
+  }
+  
   const playerMove = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     const button: HTMLButtonElement = event.currentTarget;
     setScores((previous) => ({
       ...previous,
-      isPlayerMove: false,
       playerScore: previous.playerScore + Number(button.id),
-      matchesLeft: previous.matchesLeft - Number(button.id)
+      matchesLeft: previous.matchesLeft - Number(button.id),
+      isPlayerMove: false
     }))
   };
+
+  useEffect(() => {
+  if (!didMount.current) {
+    didMount.current = true;
+    return;
+  }
+    aiMove();
+}, [scores]);
 
   return (
     <div className="game">
