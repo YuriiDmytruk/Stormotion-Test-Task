@@ -4,8 +4,6 @@ import React, { useState, useEffect, useRef } from 'react';
 
 
 function Game() {
-
-  debugger;
   const [scores, setScores] = useState({
     isPlayerMove: JSON.parse(sessionStorage.options).isEasy,
     aiScore: 0,
