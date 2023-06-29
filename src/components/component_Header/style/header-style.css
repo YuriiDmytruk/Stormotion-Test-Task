@@ -18,8 +18,5 @@
     font-size: 280%;
     color: #9933ff;
     font-family: 'Caprasimo';
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
     cursor: pointer;
 }
