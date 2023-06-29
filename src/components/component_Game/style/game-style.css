@@ -1,0 +1,88 @@
+.game {
+    display: grid;
+    margin: 1% auto;
+    width: 80%;
+    grid-template-rows: 15% 55% 15% 15%;
+    justify-items: center;
+    align-items: center;
+    font-size: 214.285714%;
+}
+
+.ai-score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width: 100%;
+    border: 3px solid #bada55;
+    border-radius: 15px;
+}
+
+.ai-score span {
+    margin-left: 20px;
+    font-size: 166.666667%;
+}
+
+.matches-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width: 100%;
+    border: 3px solid #bada55;
+    border-radius: 15px;
+
+}
+
+.matches {
+    font-size: 600%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 90%;
+    width: 100%;
+}
+
+.buttons button {
+    width: 20%;
+    height: 100%;
+    border-radius: 25px;
+    font-size: 150%;
+    background-color: #bada55;
+    color: #9933ff;
+    font-family: 'Caprasimo';
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+.buttons button:hover {
+    background-color: #c3ff00;
+}
+
+.buttons button:disabled {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+
+.player-score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width: 100%;
+    border: 3px solid #bada55;
+    border-radius: 15px;
+}
+
+.player-score span {
+    margin-left: 20px;
+    font-size: 166.666667%;
+}

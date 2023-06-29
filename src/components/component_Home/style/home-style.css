@@ -1,0 +1,37 @@
+.home {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 1% 20%;
+}
+
+.home button {
+    height: 20%;
+    border-radius: 40px;
+    font-size: 428.571429%;
+}
+
+.easy-game {
+    background-color: #c6d98a;
+}
+
+.easy-game:hover {
+    background-color: #bbd665;
+}
+
+.hard-game {
+    background-color: #d98a8a;
+}
+
+.hard-game:hover {
+    background-color: #d66565;
+}
+
+.options-game {
+    background-color: #d9d48a;
+}
+
+.options-game:hover {
+    background-color: #d2d665;
+}

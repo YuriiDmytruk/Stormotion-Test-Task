@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&display=swap');
+
+.header {
+    width: 100%;
+    display: flex;
+    background-color: #bada55;
+    border-radius: 0px 0px 25px 25px;
+}
+
+.logo {
+    flex-grow: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 280%;
+    color: #9933ff;
+    font-family: 'Caprasimo';
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
