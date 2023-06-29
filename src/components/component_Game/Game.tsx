@@ -4,20 +4,26 @@ import React, { useState, useEffect, useRef } from 'react';
 
 
 function Game() {
+
+  debugger;
   const [scores, setScores] = useState({
-    isPlayerMove: (sessionStorage.getItem("isEasy") === "True"),
+    isPlayerMove: JSON.parse(sessionStorage.options).isEasy,
     aiScore: 0,
     playerScore: 0,
-    matchesLeft: 25,
+    matchesLeft: JSON.parse(sessionStorage.options).maxMatches,
   });
+
+  const maxMatchesForMove = JSON.parse(sessionStorage.options).maxMatchesMove;
 
   const didMount = useRef(false);
 
   const aiMove = () => {
     if (!scores.isPlayerMove) {
       console.log("AiMove")
+
       let max = (scores.matchesLeft > 3 ? 3 : scores.matchesLeft);
       let number = Math.floor(Math.random() * max) + 1;
+
       setScores((previous) => ({
         ...previous,
         aiScore: previous.aiScore + number,
@@ -55,7 +61,7 @@ function Game() {
         <div className="matches">{scores.matchesLeft}</div>
       </div>
       <div className="buttons">
-        {Array.from({ length: 3 }, (_, index) => index + 1).map((value) => (
+        {Array.from({ length: maxMatchesForMove }, (_, index) => index + 1).map((value) => (
           <button disabled={scores.matchesLeft < value} className="choose" id={value.toString()} onClick={playerMove}>+ { value }</button>
         )) }
       </div>

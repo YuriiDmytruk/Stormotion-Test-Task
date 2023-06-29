@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&display=swap');
+
+.create {
+    width: 60%;
+    height: 80%;
+    margin: auto;
+    border: 2px solid #bada55;
+    border-radius: 20px;
+}
+
+.switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+}
+
+.switch button {
+    width: 30%;
+    height: 60%;
+    border-radius: 25px;
+    font-size: 178.571429%;
+    font-family: 'Caprasimo';
+}
+
+.switch button:disabled {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+
+.switch-easy {
+    background-color: #bada55;
+}
+
+.switch-hard {
+    background-color: #da5555;
+}
+
+.max-matches {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    gap: 10%;
+
+    width: 100%;
+    height: 30%;
+}
+
+.create input {
+    width: 70%;
+    height: 40%;
+    border: 2px solid #bada55;
+    border-radius: 10px;
+
+    font-size: 178.571429%;
+    text-align: center
+}
+
+.max-matches div {
+    font-size: 178.571429%;
+}
+
+::placeholder {
+    text-align: center;
+}
+
+.max-matches-move {
+    width: 100%;
+    height: 30%;
+    background-color: yellow;
+}
+
+.start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+}
+
+.start {
+    background-color: #c2d77d;
+}
+
+.start:hover {
+    background-color: #a5d700;
+}
