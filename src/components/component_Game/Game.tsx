@@ -64,8 +64,6 @@ function Game() {
       playerMove: Number(button.id),
       isPlayerMove: false
     }))
-
-    aiMove();
   };
 
   const restartGame = () => {
