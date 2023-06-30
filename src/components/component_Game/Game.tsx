@@ -17,6 +17,17 @@ function Game() {
     playerMove: 0
   });
 
+  const restartGame = () => {
+    setScores({
+      isPlayerMove: JSON.parse(sessionStorage.options).isEasy,
+      aiScore: 0,
+      playerScore: 0,
+      matchesLeft: JSON.parse(sessionStorage.options).maxMatches,
+      aiMove: 0,
+      playerMove: 0
+    });
+  }
+
   const maxMatchesForMove : number = JSON.parse(sessionStorage.options).maxMatchesMove;
 
   const didMount : any = useRef(false);
@@ -65,20 +76,10 @@ function Game() {
       isPlayerMove: false
     }))
 
-    aiMove();
+    
   };
 
-  const restartGame = () => {
-    setScores({
-      isPlayerMove: JSON.parse(sessionStorage.options).isEasy,
-      aiScore: 0,
-      playerScore: 0,
-      matchesLeft: JSON.parse(sessionStorage.options).maxMatches,
-      aiMove: 0,
-      playerMove: 0
-    });
-  }
-
+  
 
   useEffect(() => {
   if (!didMount.current) {
