@@ -22,7 +22,6 @@ function Game() {
   const didMount : any = useRef(false);
 
   const aiMove = () => {
-    debugger;
     if (!scores.isPlayerMove && scores.matchesLeft > 0) {
 
       let max : number = scores.matchesLeft > maxMatchesForMove ? maxMatchesForMove : scores.matchesLeft;
