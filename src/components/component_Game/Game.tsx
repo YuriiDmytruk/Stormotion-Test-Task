@@ -5,8 +5,6 @@ import './style/win-loose-style.css'
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 
-
-
 function Game() {
   const [scores, setScores] = useState({
     isPlayerMove: JSON.parse(sessionStorage.options).isEasy,
@@ -16,17 +14,6 @@ function Game() {
     aiMove: 0,
     playerMove: 0
   });
-
-  const restartGame = () => {
-    setScores({
-      isPlayerMove: JSON.parse(sessionStorage.options).isEasy,
-      aiScore: 0,
-      playerScore: 0,
-      matchesLeft: JSON.parse(sessionStorage.options).maxMatches,
-      aiMove: 0,
-      playerMove: 0
-    });
-  }
 
   const maxMatchesForMove : number = JSON.parse(sessionStorage.options).maxMatchesMove;
 
@@ -79,7 +66,16 @@ function Game() {
     
   };
 
-  
+  const restartGame = () => {
+    setScores({
+      isPlayerMove: JSON.parse(sessionStorage.options).isEasy,
+      aiScore: 0,
+      playerScore: 0,
+      matchesLeft: JSON.parse(sessionStorage.options).maxMatches,
+      aiMove: 0,
+      playerMove: 0
+    });
+  }
 
   useEffect(() => {
   if (!didMount.current) {

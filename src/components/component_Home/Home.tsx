@@ -2,10 +2,9 @@ import { useNavigate } from "react-router-dom";
 
 import './style/home-style.css';
 
-
-
 function Home() {
-  let navigate : any = useNavigate(); 
+  let navigate: any = useNavigate(); 
+  
   let options : any = {
     isEasy: true,
     maxMatches: 25,
