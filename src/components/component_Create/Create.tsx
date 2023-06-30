@@ -22,7 +22,6 @@ function Create() {
 
     let number = Number(event.target.value);
     let error = '';
-    console.log(number)
     if (isNaN(number)) {
       error = 'It must be a number';
     }
