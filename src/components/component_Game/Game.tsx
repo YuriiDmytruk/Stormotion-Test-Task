@@ -78,8 +78,9 @@ function Game() {
   }
 
   useEffect(() => {
-  if (!didMount.current) {
-    didMount.current = true;
+    if (!didMount.current) {
+      restartGame();
+      didMount.current = true;
     return;
   }
     aiMove();
