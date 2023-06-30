@@ -118,7 +118,7 @@ function Game() {
       </div>
       <div className="buttons">
         {Array.from({ length: maxMatchesForMove }, (_, index) => index + 1).map((value) => (
-          <button disabled={scores.matchesLeft < value} className="choose" id={value.toString()} onClick={playerMove}>+ { value }</button>
+          <button disabled={scores.matchesLeft < value} key={value} className="choose" id={value.toString()} onClick={playerMove}>+ { value }</button>
         )) }
       </div>
       <div className="player-score">
