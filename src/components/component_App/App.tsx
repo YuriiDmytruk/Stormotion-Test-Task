@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as HashRouter, Routes, Route } from 'react-router-dom';
 
 import Header from '../component_Header/Header';
 import Footer from '../component_Footer/Footer';
@@ -15,7 +15,7 @@ function App() {
 
       <Header />
 
-      <Router>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/game" element={<Game />} />
@@ -24,7 +24,7 @@ function App() {
 
           <Route path="*" element={<Home />} />
         </Routes>
-      </Router>
+      </HashRouter>
 
       <Footer />
 
