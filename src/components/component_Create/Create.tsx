@@ -32,7 +32,7 @@ function Create() {
     }
 
     if (number <= 0) {
-      error = 'Number must be more then 0';
+      error = 'Number must be greater than 0';
     }
 
     if (key === 'move' && number > 9) {

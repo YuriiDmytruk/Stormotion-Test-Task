@@ -1,4 +1,7 @@
 import './style/game-style.css'
+import './style/move-style.css'
+import './style/win-loose-style.css'
+
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 
@@ -10,6 +13,8 @@ function Game() {
     aiScore: 0,
     playerScore: 0,
     matchesLeft: JSON.parse(sessionStorage.options).maxMatches,
+    aiMove: 0,
+    playerMove: 0
   });
 
   const maxMatchesForMove : number = JSON.parse(sessionStorage.options).maxMatchesMove;
@@ -20,7 +25,7 @@ function Game() {
     if (!scores.isPlayerMove && scores.matchesLeft > 0) {
 
       let max : number = scores.matchesLeft > maxMatchesForMove ? maxMatchesForMove : scores.matchesLeft;
-      let number : number = max === 1 ? 1 : 0;
+      let number : number =  0;
     
       if (scores.matchesLeft > maxMatchesForMove * 2) {
         number = Math.floor(Math.random() * max) + 1;
@@ -34,10 +39,15 @@ function Game() {
         }
       }
 
+      if (scores.matchesLeft === 1) {
+        number = 1;
+      }
+
       setScores((previous) => ({
         ...previous,
         aiScore: previous.aiScore + number,
         matchesLeft: previous.matchesLeft - number,
+        aiMove: number,
         isPlayerMove: true
       }));
     }
@@ -51,8 +61,11 @@ function Game() {
       ...previous,
       playerScore: previous.playerScore + Number(button.id),
       matchesLeft: previous.matchesLeft - Number(button.id),
+      playerMove: Number(button.id),
       isPlayerMove: false
     }))
+
+    aiMove();
   };
 
   const restartGame = () => {
@@ -61,8 +74,11 @@ function Game() {
       aiScore: 0,
       playerScore: 0,
       matchesLeft: JSON.parse(sessionStorage.options).maxMatches,
+      aiMove: 0,
+      playerMove: 0
     });
   }
+
 
   useEffect(() => {
   if (!didMount.current) {
@@ -71,12 +87,18 @@ function Game() {
   }
     aiMove();
   }, [scores]);
-  
+
   let navigate = useNavigate();
 
   return (
     <div className="game">
-      <div className="ai-score">AI Score: <span>{ scores.aiScore }</span></div>
+      <div className="ai-score">
+        AI Score:
+        <span>{scores.aiScore}</span>
+        <div className="show-amount" key={scores.matchesLeft}>
+          { scores.aiMove === 0 || scores.matchesLeft === 0 ? "" : "+" + scores.aiMove}
+        </div>
+      </div>
       <div className="matches-left">
         {scores.matchesLeft > 0 ?
           <>
@@ -88,8 +110,10 @@ function Game() {
             <div className={scores.playerScore % 2 === 0 ? "win" : "loose"}>
               {scores.playerScore % 2 === 0 ? "You win" : "You loose"}
             </div>
-            <button onClick={restartGame}>Restart</button>
-            <button onClick={() => {navigate("../create")}}>Options</button>
+            <div className="buttons">
+              <button onClick={restartGame}>Restart</button>
+              <button onClick={() => { navigate("../create") }}>Options</button>
+            </div>
           </>}
       </div>
       <div className="buttons">
@@ -97,7 +121,13 @@ function Game() {
           <button disabled={scores.matchesLeft < value} className="choose" id={value.toString()} onClick={playerMove}>+ { value }</button>
         )) }
       </div>
-      <div className="player-score">Player Score: <span>{ scores.playerScore }</span></div>
+      <div className="player-score">
+        Player Score:
+        <span>{scores.playerScore}</span>
+        <div className="show-amount" key={scores.matchesLeft}>
+          { scores.playerMove === 0 || scores.matchesLeft === 0 ? "" : "+" + scores.playerMove}
+        </div>
+      </div>
     </div>
   );
 }

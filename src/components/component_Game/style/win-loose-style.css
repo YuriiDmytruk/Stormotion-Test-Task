@@ -1,0 +1,84 @@
+.win {
+    font-family: 'Caprasimo';
+    font-size: 200%;
+    color: rgb(234, 255, 0);
+    text-shadow: black 1px 0 10px;
+
+    animation: 4s win-animation;
+}
+
+.loose {
+    font-family: 'Caprasimo';
+    font-size: 200%;
+    color: rgb(166, 160, 255);
+    text-shadow: black 1px 0 10px;
+
+    animation: 4s loose-animation;
+}
+
+.matches-left .buttons {
+    gap: 10%;
+    height: 40%;
+    display: flex;
+}
+
+.matches-left button {
+    margin-top: 25%;
+    width: 40%;
+    max-width: 300px;
+    height: 40%;
+    font-size: 100%;
+}
+
+
+@keyframes win-animation {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        rotate: 20deg;
+    }
+
+    75% {
+        rotate: -20deg;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes loose-animation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 550px) {
+    .matches-left button {
+        margin-top: 20%;
+    }
+}
+
+@media (min-width: 660px) {
+    .matches-left button {
+        margin-top: 15%;
+    }
+}
+
+@media (min-width: 860px) {
+    .matches-left button {
+        margin-top: 10%;
+    }
+}
+
+@media (min-width: 950px) {
+    .matches-left button {
+        margin-top: 5%;
+    }
+}

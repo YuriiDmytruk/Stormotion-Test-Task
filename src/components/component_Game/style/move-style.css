@@ -1,0 +1,23 @@
+.show-amount {
+    position: absolute;
+    margin-left: 70%;
+    font-size: 166.666667%;
+    color: #698900;
+    opacity: 0;
+    animation: 4s apear;
+}
+
+
+@keyframes apear {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

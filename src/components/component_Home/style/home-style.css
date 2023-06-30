@@ -9,7 +9,7 @@
 .home button {
     height: 20%;
     border-radius: 40px;
-    font-size: 428.571429%;
+    font-size: 230%;
 }
 
 .easy-game {
@@ -34,4 +34,28 @@
 
 .options-game:hover {
     background-color: #d2d665;
+}
+
+@media (min-width: 350px) {
+    .home button {
+        font-size: 300%;
+    }
+}
+
+@media (min-width: 430px) {
+    .home button {
+        font-size: 350%;
+    }
+}
+
+@media (min-width: 500px) {
+    .home button {
+        font-size: 390%;
+    }
+}
+
+@media (min-width: 600px) {
+    .home button {
+        font-size: 428.571429%;
+    }
 }
