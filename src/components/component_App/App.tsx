@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Route, BrowserRouter, Routes } from "react-router-dom";
 
 import Header from '../component_Header/Header';
 import Footer from '../component_Footer/Footer';
@@ -13,18 +13,17 @@ function App() {
   return (
     <div className="app">
 
-      <Header />
+      <BrowserRouter>
+        <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/game" element={<Game />} />
+            <Route path="/create" element={<Create />} />
 
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/game" element={<Game />} />
-          <Route path="/create" element={<Create />} />
-        </Routes>
-      </Router>
-
-      <Footer />
-
+            <Route path="*" element={<Home />} />
+          </Routes>
+        <Footer/>
+      </BrowserRouter>   
     </div>
   );
 }

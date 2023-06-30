@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import { useNavigate } from "react-router-dom";
 
 import './style/create-style.css'
@@ -22,7 +21,6 @@ function Create() {
 
     let number = Number(event.target.value);
     let error = '';
-    console.log(number)
     if (isNaN(number)) {
       error = 'It must be a number';
     }
@@ -59,7 +57,7 @@ function Create() {
     setState((previous) => ({ ...previous, maxMatchesMove: 0 }))
   }
   
-  let navigate : any = useNavigate();
+  let navigate: any = useNavigate();
   
   return (
     <div className="create">
@@ -67,7 +65,7 @@ function Create() {
       <div className="switch">
         <button
           onClick={() => {setState((previous) => ({...previous, isEasy: !previous.isEasy}))}}
-          className={state.isEasy ? "switch-easy" : "switch-hard"}>
+          className= {state.isEasy ? "switch-easy" : "switch-hard"}>
           {state.isEasy ? "Easy Mode" : "Hard Mode"}
         </button>
       </div>
